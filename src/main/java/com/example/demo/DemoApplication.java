@@ -1,7 +1,10 @@
 package com.example.demo;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
+
+import kong.unirest.json.JSONObject;
 import org.apache.commons.codec.binary.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
@@ -16,18 +19,15 @@ import org.apache.http.protocol.HttpContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.http.HttpHeaders;
 import java.util.Map;
-import org.springframework.http.MediaType;
+
+import org.w3c.dom.Entity;
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -150,5 +150,17 @@ public class DemoApplication {
 	           e.printStackTrace();
 	    }	   
 	    return response.getBody();
-    }		
+    }
+
+	@GetMapping(path = "/hello", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<JSONObject>> sayHello()
+	{
+		//Get data from service layer into entityList.
+		List<JSONObject> entities = new ArrayList<JSONObject>();
+		JSONObject entity = new JSONObject();
+		entity.put("aa", "bb");
+		entity.put("xx", "yy");
+		entities.add(entity);
+		return new ResponseEntity<>(entities, HttpStatus.OK);
+	}
 }
