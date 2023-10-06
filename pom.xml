@@ -50,7 +50,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>riko20xx/web2</name>
+						<name>riko20xx/mydemo</name>
 						<!--<publish>true</publish>-->
 					</image>
 					<!--
@@ -69,7 +69,7 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>riko20xx/web2</name>
+                            <name>riko20xx/mydemo</name>
                             <build>
                                 <contextDir>${project.build.directory}/dist</contextDir>								
                             </build>

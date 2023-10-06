@@ -26,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
 import java.util.Map;
 
-import org.w3c.dom.Entity;
+
 
 @SpringBootApplication
 @RestController
@@ -153,14 +153,15 @@ public class DemoApplication {
     }
 
 	@GetMapping(path = "/hello", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<JSONObject>> sayHello()
+	public ResponseEntity<Object> sayHello()
 	{
 		//Get data from service layer into entityList.
-		List<JSONObject> entities = new ArrayList<JSONObject>();
+		//List<JSONObject> entities = new ArrayList<JSONObject>();
 		JSONObject entity = new JSONObject();
-		entity.put("aa", "bb");
-		entity.put("xx", "yy");
-		entities.add(entity);
-		return new ResponseEntity<>(entities, HttpStatus.OK);
+		//entity.put("aa", "bb");
+		//entity.put("xx", "yy");
+		//entities.add(entity);
+		MyModel model = new MyModel("123","riko");
+		return new ResponseEntity<Object>(model, HttpStatus.OK);
 	}
 }
