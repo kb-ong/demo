@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo-2
-          image: "registry.hub.docker.com/riko20xx/demo:latest"
+          image: "riko20xx/mydemo:latest"
           imagePullPolicy: Always
           ports:
           - containerPort: 18081
